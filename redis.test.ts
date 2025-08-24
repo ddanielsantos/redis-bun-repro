@@ -1,16 +1,16 @@
-import { RedisMemoryServer } from "redis-memory-server";
-import { RedisClient } from "bun";
-import { afterEach, it, describe, expect } from "bun:test"
+import { afterEach, it, describe, expect } from "vitest";
+import { Redis } from "ioredis";
+import RedisMemoryServer from "redis-memory-server";
 
 const servers = new Map<string, RedisMemoryServer>();
-const clients = new Map<string, RedisClient>();
+const clients = new Map<string, Redis>();
 
 async function startRedis(name: string = "default") {
     const server = await RedisMemoryServer.create();
     servers.set(name, server);
 
     const url = `redis://${await server.getHost()}:${await server.getPort()}`;
-    const client = new RedisClient(url);
+    const client = new Redis(url);
 
     clients.set(url, client);
     return { server, client };
@@ -25,9 +25,9 @@ async function stopRedis(name: string = "default") {
 
     if (client) {
         try {
-            client.close(); // Bun API: encerra conexão
+            client.quit();
         } catch (err) {
-            console.warn("Erro ao fechar cliente:", err);
+            console.log("Error closing client:", err);
         }
         clients.delete(url);
     }
@@ -37,11 +37,10 @@ async function stopRedis(name: string = "default") {
 }
 
 afterEach(async () => {
-    // ⚠️ crash ocorre aqui após o primeiro teste
     await stopRedis("default");
 });
 
-describe("redis-memory-server with bun", () => {
+describe("redis-testcontainers-node", () => {
     it("should start redis", async () => {
         const { client } = await startRedis("default");
         await client.set("foo", "bar");

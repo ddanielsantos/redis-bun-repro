@@ -1,16 +1,17 @@
 {
-  "name": "redis-bun-repro",
-  "module": "index.ts",
+  "name": "redis-node-repro",
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "bun test"
+    "test": "vitest"
   },
   "devDependencies": {
-    "@types/bun": "latest",
+    "vitest": "^1.6.0",
+    "ioredis": "^5.4.1",
     "redis-memory-server": "^0.13.0"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.2"
   }
 }
+
