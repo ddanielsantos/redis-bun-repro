@@ -3,9 +3,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "vitest"
+    "test": "bun test"
   },
   "devDependencies": {
+    "bun-types": "^1.2.20",
     "vitest": "^1.6.0",
     "ioredis": "^5.4.1",
     "redis-memory-server": "^0.13.0"

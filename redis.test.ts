@@ -1,4 +1,4 @@
-import { afterEach, it, describe, expect } from "vitest";
+import { afterEach, it, describe, expect } from "bun:test";
 import { Redis } from "ioredis";
 import RedisMemoryServer from "redis-memory-server";
 
