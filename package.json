@@ -1,0 +1,16 @@
+{
+  "name": "redis-bun-repro",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "redis-memory-server": "^0.13.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
