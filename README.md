@@ -1,3 +1,7 @@
+see https://github.com/mhassan1/redis-memory-server/issues/54
+
+---
+
 # bun-redis-memory-server-repro
 
 Minimal reproduction of a crash when using [redis-memory-server](https://github.com/mhassan1/redis-memory-server/) together with [Bun](https://bun.sh) on **Windows**.
